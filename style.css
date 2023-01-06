@@ -17,8 +17,25 @@ img {
 
 h1 {
     font-size: 3em;
+    z-index: 1;
+    margin-bottom: 0px;
+    text-align: center;
 }
 
+p{
+  margin-top: 10px;
+  font-size: 0.75em;
+  z-index: 1;
+  text-align: center;
+}
+
+#preloader{
+  background: #FFF url(loader.gif) no-repeat center center;
+  height:100vh;
+  position:fixed;
+  width:100%;
+  z-index: 0;
+}
 
 body {
     display: flex;
@@ -29,6 +46,7 @@ body {
 
 /* CSS */
 .try-again-button {
+  z-index: 5;
   align-items: center;
   background-color: #000;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -88,6 +106,13 @@ img {
 
 h1{
     font-size: 5em;
+}
+
+p{
+  margin-top: 10px;
+  font-size: 1.2em;
+  z-index: 1;
+  text-align: center;
 }
 
 }
