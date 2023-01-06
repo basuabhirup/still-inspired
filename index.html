@@ -16,7 +16,7 @@
     <title>Still A Work of Art</title>
 </head>
 
-<body>
+<body onload="getNewImage()">
     <div id="preloader"></div>
     <h1>Still A Work of Art</h1>
     <p>Image prompts to ignite your artistic creativity.</p>
@@ -29,11 +29,15 @@
 
     <div class="image-container">
         <img id="theImage"
-            src="https://source.unsplash.com/random?still-life-photography,still-life,objects,food,nature">
+            src="">
     </div>
-    <p><input type="button" class="try-again-button"
+    <p>
+        <input 
+            type="button" class="try-again-button"
             title="Careful! This picture might be gone forever once you click this." value="Try another Picture"
-            onclick="window.location.reload()"></p>
+            onclick="getNewImage()"
+        >
+    </p>
 
             <div id="footer">
         Images brought to you by <a href="https://unsplash.com/" target="_blank"> Unsplash.</a> <br> Made by Anusha, in
@@ -41,11 +45,20 @@
             </div>
 
     <script>
-        var loader = document.getElementById("preloader");
-        window.addEventListener("load", function () {
-            loader.style.display = "none"
-        })
+        const loader = document.getElementById("preloader")
+        const img = document.getElementById("theImage")
 
+        const getNewImage = () => {
+            loader.style.display = "block" // Starts displaying loader
+            fetch('https://api.unsplash.com/photos/random?client_id=7_3Xjis7Gt87suNWSAboA6T2qMvSAgFB8dpdBy4Px7A&query=still-life-photography,still-life,objects,food,nature')
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data) // View API response in browser console
+                    loader.style.display = "none" // Stops displaying Loader after getting succesful API response
+                    img.src = data.urls.regular
+                    img.alt = data.alt_description
+                })
+        }
     </script>
 </body>
 
