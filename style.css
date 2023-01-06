@@ -24,6 +24,10 @@ h1 {
 
 #footer{
   margin-top: 70px;
+  text-align: center;
+  margin-bottom: 0;
+  bottom: 0;
+  padding-bottom: 0;
 }
 
 p{
