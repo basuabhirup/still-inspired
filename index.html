@@ -27,21 +27,21 @@
         }
     </script> -->
 
-    <div class="image-container">
-        <img id="theImage" src="https://source.unsplash.com/random?still-life-photography,still-life,objects,food,nature">
-    </div>
-    <div id="attribution">
-        <a id="username" target="_blank" rel="noopener noreferrer"></a> / 
-        <a href="https://unsplash.com/?utm_source=Still-a-Work-of-Art&utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a>
-    </div>
+    <section class="image-container-parent">
+        <div class="image-container">
+            <img id="theImage"
+                src="https://source.unsplash.com/random?still-life-photography,still-life,objects,food,nature">
+        </div>
+        <div id="attribution">
+            <a id="username" target="_blank" rel="noopener noreferrer"></a> /
+            <a href="https://unsplash.com/?utm_source=Still-a-Work-of-Art&utm_medium=referral" target="_blank"
+                rel="noopener noreferrer">Unsplash</a>
+        </div>
+    </section>
     <p>
-        <input 
-            type="button" 
-            class="try-again-button"
-            title="Careful! This picture might be gone forever once you click this."
-            value="Try another Picture"
-            onclick="window.location.reload()"
-        >
+        <input type="button" class="try-again-button"
+            title="Careful! This picture might be gone forever once you click this." value="Try another Picture"
+            onclick="getNewImage()">
     </p>
 
     <div id="footer">
@@ -67,7 +67,6 @@
                     img.alt = data.alt_description
                     username.href = `${data.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`
                     username.innerHTML = data.user.name
-                    tryAgainButton.onClick = "getNewImage()"
                     setTimeout(() => {
                         attribution.style.display = "block"
                         tryAgainButton.disabled = false
@@ -77,7 +76,7 @@
                 .catch((err) => {
                     console.error(err)
                     tryAgainButton.disabled = false
-                    loader.style.display = "none" 
+                    loader.style.display = "none"
                 })
         }
     </script>
