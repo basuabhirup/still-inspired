@@ -32,17 +32,21 @@
     </div>
     <div id="attribution">
         <a id="username" target="_blank" rel="noopener noreferrer"></a> / 
-        <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a>
+        <a href="https://unsplash.com/?utm_source=Still-a-Work-of-Art&utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a>
     </div>
     <p>
-        <input type="button" class="try-again-button"
-            title="Careful! This picture might be gone forever once you click this." 
+        <input 
+            type="button" 
+            class="try-again-button"
+            title="Careful! This picture might be gone forever once you click this."
             value="Try another Picture"
-            onclick="getNewImage()">
+            onclick="window.location.reload()"
+        >
     </p>
 
     <div id="footer">
-        Made by Anusha, in pursuit of art-block-free days.
+        Made by Anusha & Abhirup <br>
+        in pursuit of art-block-free days.
     </div>
 
     <script>
@@ -61,8 +65,9 @@
                     // console.log(data) // View API response in browser console
                     img.src = data.urls.regular
                     img.alt = data.alt_description
-                    username.href = data.user.links.html
+                    username.href = `${data.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`
                     username.innerHTML = data.user.name
+                    tryAgainButton.onClick = "getNewImage()"
                     setTimeout(() => {
                         attribution.style.display = "block"
                         tryAgainButton.disabled = false

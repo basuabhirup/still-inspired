@@ -8,7 +8,7 @@ const handler = async () => {
   try {
     const res = await fetch(`${API_URL}?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=${queries}`)
     response = await res.json()
-    console.log(`Fetched image with url: ${response.urls.regular}`)
+    console.log(`Successfully fetched image with url: ${response.urls.regular}`)
   } catch (err) {
     console.error(err)
     return {
