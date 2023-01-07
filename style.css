@@ -3,6 +3,14 @@ img {
     height: auto;
 }
 
+.image-container-parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
 .image-container {
     max-width: 100%;
     height: auto;
@@ -111,20 +119,18 @@ a:hover{
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
-@media only screen and (min-width: 768px) {
-    .image-container {
-    height: 70vh;
-    /* max-width: 600px;
-    height: 500px;
-    height: auto; */
-    margin: 3px;
-    padding: 3px;
-    border: 10px solid #000;
-}
 
 .try-again-button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
+}
+
+@media only screen and (min-width: 768px) {
+    .image-container {
+    height: 70vh;
+    margin: 3px;
+    padding: 3px;
+    border: 10px solid #000;
 }
 
 img {
