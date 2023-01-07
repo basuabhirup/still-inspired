@@ -4,7 +4,7 @@ const handler = async () => {
   fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=still-life-photography,still-life,objects,food,nature`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      console.log("Succesfully fetched image from unsplash!")
       return {
         statusCode: 200,
         body: data,

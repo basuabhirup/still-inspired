@@ -6,12 +6,11 @@ img {
 .image-container {
     max-width: 100%;
     height: 700px;
-    height: auto;
     margin: 5px;
     padding: 5px;
     display: flex;
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
     border: 5px solid #000;
 }
 
@@ -40,8 +39,8 @@ p{
 
 #preloader{
   background: #FFF url(loader.gif) no-repeat center center;
-  height:100vh;
-  position:fixed;
+  height: 1100px;
+  position:absolute;
   width:100%;
   z-index: 0;
 }

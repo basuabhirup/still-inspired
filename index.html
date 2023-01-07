@@ -28,7 +28,7 @@
     </script> -->
 
     <div class="image-container">
-        <img id="theImage" src="">
+        <img id="theImage" src="https://source.unsplash.com/random?still-life-photography,still-life,objects,food,nature">
     </div>
     <div id="attribution">
         <a id="username" target="_blank" rel="noopener noreferrer"></a> / 
@@ -58,14 +58,16 @@
             fetch('/.netlify/functions/getNewImage')
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data) // View API response in browser console
-                    loader.style.display = "none" // Stops displaying Loader after getting succesful API response
-                    attribution.style.display = "block"
-                    tryAgainButton.disabled = false
+                    // console.log(data) // View API response in browser console
                     img.src = data.urls.regular
                     img.alt = data.alt_description
                     username.href = data.user.links.html
                     username.innerHTML = data.user.name
+                    setTimeout(() => {
+                        attribution.style.display = "block"
+                        tryAgainButton.disabled = false
+                        loader.style.display = "none" // Stops displaying Loader after getting succesfully changing image
+                    }, 750)
                 })
                 .catch((err) => {
                     console.error(err)
