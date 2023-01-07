@@ -1,29 +1,16 @@
 const fetch = require('node-fetch')
 
-const handler = async () => {
-  fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=still-life-photography,still-life,objects,food,nature`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Succesfully fetched image from unsplash!")
-      return {
-        statusCode: 200,
-        body: data,
-      }
-    })
-    .catch((error) => {
-      console.error(error)
-      return {
-        statusCode: 500,
-        // Could be a custom message or object i.e. JSON.stringify(err)
-        body: JSON.stringify({ msg: error.message }),
-      }
-    })
+const API_URL = "https://api.unsplash.com/photos/random"
+const queries = "still-life-photography,still-life,objects,food,nature"
 
+const handler = async () => {
   let response
   try {
-    const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=still-life-photography,still-life,objects,food,nature`)
+    const res = await fetch(`${API_URL}?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=${queries}`)
     response = await res.json()
+    console.log(`Fetched image with url: ${response.urls.regular}`)
   } catch (err) {
+    console.error(err)
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
@@ -31,7 +18,6 @@ const handler = async () => {
       })
     }
   }
-
   return {
     statusCode: 200,
     body: JSON.stringify(response)
