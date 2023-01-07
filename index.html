@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- <link rel="manifest" href="/site.webmanifest"> -->
     <title>Still A Work of Art</title>
 </head>
 
@@ -36,7 +36,8 @@
     </div>
     <p>
         <input type="button" class="try-again-button"
-            title="Careful! This picture might be gone forever once you click this." value="Try another Picture"
+            title="Careful! This picture might be gone forever once you click this." 
+            value="Try another Picture"
             onclick="getNewImage()">
     </p>
 
@@ -47,21 +48,29 @@
     <script>
         const loader = document.getElementById("preloader")
         const img = document.getElementById("theImage")
+        const tryAgainButton = document.querySelector(".try-again-button")
         const attribution = document.getElementById("attribution")
         const username = document.getElementById("username")
 
         const getNewImage = () => {
             loader.style.display = "block" // Starts displaying loader
-            fetch('https://api.unsplash.com/photos/random?client_id=7_3Xjis7Gt87suNWSAboA6T2qMvSAgFB8dpdBy4Px7A&query=still-life-photography,still-life,objects,food,nature')
+            tryAgainButton.disabled = true
+            fetch('/.netlify/functions/getNewImage')
                 .then((res) => res.json())
                 .then((data) => {
-                    // console.log(data) // View API response in browser console
+                    console.log(data) // View API response in browser console
                     loader.style.display = "none" // Stops displaying Loader after getting succesful API response
                     attribution.style.display = "block"
+                    tryAgainButton.disabled = false
                     img.src = data.urls.regular
                     img.alt = data.alt_description
                     username.href = data.user.links.html
                     username.innerHTML = data.user.name
+                })
+                .catch((err) => {
+                    console.error(err)
+                    tryAgainButton.disabled = false
+                    loader.style.display = "none" 
                 })
         }
     </script>

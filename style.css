@@ -123,6 +123,11 @@ a:hover{
     border: 10px solid #000;
 }
 
+.try-again-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 img {
   width: auto;
   max-height: 100%;
