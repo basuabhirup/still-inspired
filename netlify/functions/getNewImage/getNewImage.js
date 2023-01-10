@@ -1,7 +1,19 @@
 const fetch = require('node-fetch')
 
 const API_URL = "https://api.unsplash.com/photos/random"
-const queries = "still-life-photography,still-life,objects,food,nature"
+const queries = `still-life-photography,
+                  still-life,
+                  objects,
+                  food,
+                  nature,
+                  travel,
+                  food-drink,
+                  architecture-interior,
+                  outdoors,
+                  birds,
+                  food-presentation,
+                  food-photography,
+                  still-life-photos`
 
 const handler = async () => {
   let response

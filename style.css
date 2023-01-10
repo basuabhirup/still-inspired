@@ -47,7 +47,7 @@ p{
 
 #preloader{
   background: #FFF url(loader.gif) no-repeat center center;
-  height: 1100px;
+  height: 110vh;
   position:absolute;
   width:100%;
   z-index: 0;
@@ -149,6 +149,10 @@ p{
   font-size: 1.2em;
   z-index: 1;
   text-align: center;
+}
+
+#preloader{
+  height: 120%;
 }
 
 }
