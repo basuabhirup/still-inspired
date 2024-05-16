@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Still A Work of Art</title>
 </head>
 
@@ -26,6 +26,15 @@
             document.getElementById("theImage").src = "https://source.unsplash.com/random?still-life-photography,still-life,objects,food,nature";
         }
     </script> -->
+
+    <section class="filters">
+        <span class="option">Landscapes</span>
+        <span class="option">Portraits</span>
+        <span class="option">Food</span>
+        <span class="option">Architecture</span>
+        <span class="option">Still Life</span>
+        <button>Apply</button>
+    </section>
 
     <section class="image-container-parent">
         <div class="image-container">
@@ -49,37 +58,7 @@
         in pursuit of art-block-free days.
     </div>
 
-    <script>
-        const loader = document.getElementById("preloader")
-        const img = document.getElementById("theImage")
-        const tryAgainButton = document.querySelector(".try-again-button")
-        const attribution = document.getElementById("attribution")
-        const username = document.getElementById("username")
-
-        const getNewImage = () => {
-            loader.style.display = "block" // Starts displaying loader
-            tryAgainButton.disabled = true
-            fetch('/.netlify/functions/getNewImage')
-                .then((res) => res.json())
-                .then((data) => {
-                    // console.log(data) // View API response in browser console
-                    img.src = data.urls.regular
-                    img.alt = data.alt_description
-                    username.href = `${data.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`
-                    username.innerHTML = data.user.name
-                    setTimeout(() => {
-                        attribution.style.display = "block"
-                        tryAgainButton.disabled = false
-                        loader.style.display = "none" // Stops displaying Loader after getting succesfully changing image
-                    }, 750)
-                })
-                .catch((err) => {
-                    console.error(err)
-                    tryAgainButton.disabled = false
-                    loader.style.display = "none"
-                })
-        }
-    </script>
+    <script type="text/javascript" src="script.js"></script> 
 </body>
 
 </html>
