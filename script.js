@@ -3,6 +3,7 @@ const img = document.getElementById("theImage");
 const tryAgainButton = document.querySelector(".try-again-button");
 const attribution = document.getElementById("attribution");
 const username = document.getElementById("username");
+const filters = document.querySelector(".filters")
 const filterOptions = document.querySelectorAll(".option");
 const applyButton = document.querySelector("button");
 const SELECTED_FILTERS_KEY = "sawoa-selectedFilters";
@@ -37,6 +38,9 @@ filterOptions.forEach((option) => {
       selectedFilters.push(filter);
     }
     updateFilterUI(name, filter);
+    
+    // Update localStorage with selectedFilters
+    localStorage.setItem(SELECTED_FILTERS_KEY, JSON.stringify(selectedFilters));
   });
 });
 
@@ -60,6 +64,8 @@ const getNewImage = () => {
     behavior: "smooth",
   });
   loader.style.display = "block"; // Starts displaying loader
+  filters.style.display = "none";
+  tryAgainButton.style.display = "none";
   tryAgainButton.disabled = true;
   tryAgainButton.value = "Try another Picture"
 
@@ -80,14 +86,15 @@ const getNewImage = () => {
         attribution.style.display = "block";
         tryAgainButton.disabled = false;
         loader.style.display = "none"; // Stops displaying Loader after getting succesfully changing image
+        filters.style.display = "flex";
+        tryAgainButton.style.display = "block";
       }, 1000);
     })
     .catch((err) => {
       console.error(err);
       tryAgainButton.disabled = false;
       loader.style.display = "none";
+      filters.style.display = "flex";
+      tryAgainButton.style.display = "block";
     });
-
-    // Update localStorage with selectedFilters
-    localStorage.setItem(SELECTED_FILTERS_KEY, JSON.stringify(selectedFilters));
 };
