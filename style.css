@@ -55,6 +55,10 @@ a:hover {
   display: none;
 }
 
+.btn-container {
+  margin: 1rem;
+}
+
 .filters {
   display: flex;
   flex-direction: row;
@@ -62,31 +66,25 @@ a:hover {
   text-align: center;
   flex-wrap: wrap;
   text-align: center;
-  margin: 1rem auto 3rem;
+  margin: 1rem auto;
 }
 
 .filters > * {
-  width: 10rem;
-  padding: 1rem 1.5rem;
+  width: 5rem;
+  padding: 1rem;
   margin: 1rem;
   border: 1px solid grey;
   outline: none;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .filters >*:hover {
   cursor: pointer;
   transform: translateY(-1px);
-  font-weight: bold;
 }
 
-.filters > button {
-  font-family: "Overpass Mono", monospace;
-  color: white;
-  background-color: #000;
-  border-radius: 1rem;
-  width: 9rem;
-  margin: 1rem 3rem;
+span[role="button"] {
+  display: block;
 }
 
 .image-container-parent {
@@ -131,6 +129,7 @@ a:hover {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+  font-family: "Overpass Mono", monospace;
 }
 
 .try-again-button:hover,
@@ -176,12 +175,23 @@ a:hover {
     text-align: center;
   }
 
+  span[role="button"] {
+    display: inline;
+  }
+
   #preloader {
     height: 120%;
   }
 
   .filters {
     max-width: 60vw;
+    margin: 1rem auto 3rem;
+  }
+
+  .filters > * {
+    width: 10rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
 
   .image-container {

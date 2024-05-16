@@ -27,15 +27,6 @@
         }
     </script> -->
 
-    <section class="filters">
-        <span class="option">Landscapes</span>
-        <span class="option">Portraits</span>
-        <span class="option">Food</span>
-        <span class="option">Architecture</span>
-        <span class="option">Still Life</span>
-        <button>Apply</button>
-    </section>
-
     <section class="image-container-parent">
         <div class="image-container">
             <img id="theImage"
@@ -47,11 +38,22 @@
                 rel="noopener noreferrer">Unsplash</a>
         </div>
     </section>
-    <p>
+    <div class="btn-container">
         <input type="button" class="try-again-button"
             title="Careful! This picture might be gone forever once you click this." value="Try another Picture"
             onclick="getNewImage()">
-    </p>
+    </div>
+
+    <section class="filters">
+        <span class="option" data-filter="nature, outdoor, outdoors, landscapes, mountain, forest">Landscapes <span role="button">(x)</span></span>
+        <span class="option" data-filter="portrait-photo, people, portrait, fashion-beauty">People <span role="button">(x)</span></span>
+        <span class="option" data-filter="food, food-drink, food-presentation, food-photography">Food <span role="button">(x)</span></span>
+        <span class="option" data-filter="animals, birds">Animals <span role="button">(x)</span></span>
+        <span class="option" data-filter="experimental">Experimental <span role="button">(x)</span></span>
+        <span class="option" data-filter="architecture-interior">Architecture <span role="button">(x)</span></span>
+        <span class="option" data-filter="still-life-photography, still-life, objects, still-life-photos">Still Life <span role="button">(x)</span></span>
+        <!-- <button>Apply</button> -->
+    </section>
 
     <div id="footer">
         Made by Anusha & Abhirup <br>
