@@ -1,6 +1,90 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Overpass Mono", monospace;
+}
+
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 3em;
+  z-index: 1;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+p {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 0.75em;
+  z-index: 1;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: coral;
+  cursor: pointer;
+}
+
+#footer {
+  margin-top: 70px;
+  text-align: center;
+  margin-bottom: 0;
+  bottom: 0;
+  padding-bottom: 0;
+}
+
+#preloader {
+  background: #fff url(loader.gif) no-repeat center center;
+  height: 110vh;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+#attribution {
+  display: none;
+}
+
+.btn-container {
+  margin: 1rem;
+}
+
+.filters {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.filters > * {
+  width: 5rem;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid grey;
+  outline: none;
+  font-size: 0.75rem;
+}
+
+.filters >*:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+span[role="button"] {
+  display: block;
 }
 
 .image-container-parent {
@@ -12,86 +96,33 @@ img {
 }
 
 .image-container {
-    max-width: 100%;
-    height: auto;
-    margin: 5px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid #000;
+  max-width: 100%;
+  height: auto;
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #000;
 }
 
-h1 {
-    font-size: 3em;
-    z-index: 1;
-    margin-bottom: 0px;
-    text-align: center;
-}
-
-#footer{
-  margin-top: 70px;
-  text-align: center;
-  margin-bottom: 0;
-  bottom: 0;
-  padding-bottom: 0;
-}
-
-p{
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-size: 0.75em;
-  z-index: 1;
-  text-align: center;
-}
-
-#preloader{
-  background: #FFF url(loader.gif) no-repeat center center;
-  height: 110vh;
-  position:absolute;
-  width:100%;
-  z-index: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'PT Mono', monospace;
-}
-
-#attribution{
-  display: none;
-}
-
-a{
-  text-decoration: none;
-  color: #000;
-}
-
-a:hover{
-  color: coral;
-  cursor: pointer;
-}
-
-/* CSS */
 .try-again-button {
+  display: none;
   z-index: 5;
   align-items: center;
   background-color: #000;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   color: rgba(255, 255, 255);
   cursor: pointer;
-  font-family: 'PT Mono', monospace;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   margin: 0;
   margin-top: 20px;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   /* position: relative; */
   transition: all 250ms;
   user-select: none;
@@ -99,6 +130,7 @@ a:hover{
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+  font-family: "Overpass Mono", monospace;
 }
 
 .try-again-button:hover,
@@ -113,7 +145,7 @@ a:hover{
 }
 
 .try-again-button:active {
-  background-color: #F0F0F1;
+  background-color: #f0f0f1;
   border-color: rgba(0, 0, 0, 0.15);
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   color: rgba(0, 0, 0, 0.65);
@@ -126,33 +158,47 @@ a:hover{
 }
 
 @media only screen and (min-width: 768px) {
-    .image-container {
+  img {
+    width: auto;
+    max-height: 100%;
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 5em;
+  }
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    font-size: 1.2em;
+    z-index: 1;
+    text-align: center;
+  }
+
+  span[role="button"] {
+    display: inline;
+  }
+
+  #preloader {
+    height: 120%;
+  }
+
+  .filters {
+    max-width: 60vw;
+    margin: 1rem auto 3rem;
+  }
+
+  .filters > * {
+    width: 10rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .image-container {
     height: 70vh;
     margin: 3px;
     padding: 3px;
     border: 10px solid #000;
-}
-
-img {
-  width: auto;
-  max-height: 100%;
-}
-
-h1{
-  margin-top: 40px;
-    font-size: 5em;
-}
-
-p{
-  margin-top: 10px;
-  margin-bottom: 50px;
-  font-size: 1.2em;
-  z-index: 1;
-  text-align: center;
-}
-
-#preloader{
-  height: 120%;
-}
-
+  }
 }

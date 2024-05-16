@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Still A Work of Art</title>
 </head>
 
@@ -38,48 +38,29 @@
                 rel="noopener noreferrer">Unsplash</a>
         </div>
     </section>
-    <p>
+    <div class="btn-container">
         <input type="button" class="try-again-button"
             title="Careful! This picture might be gone forever once you click this." value="Try another Picture"
             onclick="getNewImage()">
-    </p>
+    </div>
+
+    <section class="filters">
+        <span class="option" data-filter="nature, outdoor, outdoors, landscapes, mountain, forest">Landscapes <span role="button">(x)</span></span>
+        <span class="option" data-filter="portrait-photo, people, portrait, fashion-beauty">People <span role="button">(x)</span></span>
+        <span class="option" data-filter="food, food-drink, food-presentation, food-photography">Food <span role="button">(x)</span></span>
+        <span class="option" data-filter="animals, birds">Animals <span role="button">(x)</span></span>
+        <span class="option" data-filter="experimental">Experimental <span role="button">(x)</span></span>
+        <span class="option" data-filter="architecture-interior">Architecture <span role="button">(x)</span></span>
+        <span class="option" data-filter="still-life-photography, still-life, still-life-photos">Still Life <span role="button">(x)</span></span>
+        <!-- <button>Apply</button> -->
+    </section>
 
     <div id="footer">
         Made by Anusha & Abhirup <br>
         in pursuit of art-block-free days.
     </div>
 
-    <script>
-        const loader = document.getElementById("preloader")
-        const img = document.getElementById("theImage")
-        const tryAgainButton = document.querySelector(".try-again-button")
-        const attribution = document.getElementById("attribution")
-        const username = document.getElementById("username")
-
-        const getNewImage = () => {
-            loader.style.display = "block" // Starts displaying loader
-            tryAgainButton.disabled = true
-            fetch('/.netlify/functions/getNewImage')
-                .then((res) => res.json())
-                .then((data) => {
-                    // console.log(data) // View API response in browser console
-                    img.src = data.urls.regular
-                    img.alt = data.alt_description
-                    username.href = `${data.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`
-                    username.innerHTML = data.user.name
-                    setTimeout(() => {
-                        attribution.style.display = "block"
-                        tryAgainButton.disabled = false
-                        loader.style.display = "none" // Stops displaying Loader after getting succesfully changing image
-                    }, 750)
-                })
-                .catch((err) => {
-                    console.error(err)
-                    tryAgainButton.disabled = false
-                    loader.style.display = "none"
-                })
-        }
-    </script>
+    <script type="text/javascript" src="script.js"></script> 
 </body>
 
 </html>
