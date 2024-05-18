@@ -33,10 +33,13 @@
     - Please Note: Selecting multiple categories **does not generate pictures that combine these categories**; it randomly selects from the pool of all pictures in the selected categories.
   
 
-
 ## Contributing
 
 This project is currently not set up for code contributions. However, we appreciate your interest in helping us improve!
 
 - If you encounter any issues while using the website, please create a new issue on the project repository. Be sure to describe the issue in detail and provide any relevant screenshots or steps to reproduce it.
 - If you have an idea for a new feature, feel free to create a new issue and share your suggestion. We'd love to hear your thoughts!
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
