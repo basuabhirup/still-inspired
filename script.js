@@ -47,7 +47,7 @@ filterOptions.forEach((option) => {
 // Update UI based on selected filters
 function updateFilterUI(name, filter) {
   const filterSpan = document.querySelector(`[data-filter="${filter}"]`);
-  tryAgainButton.value = "Apply Filter";
+  tryAgainButton.value = "Apply Tags";
   if (selectedFilters.includes(filter)) {
     filterSpan.innerHTML = `${name} <span role="button">(x)</span>`;
     filterSpan.style.border = "1px solid grey";
