@@ -3,9 +3,10 @@ const img = document.getElementById("theImage");
 const tryAgainButton = document.querySelector(".try-again-button");
 const attribution = document.getElementById("attribution");
 const username = document.getElementById("username");
-const filters = document.querySelector(".filters")
+const filters = document.querySelector(".filters");
 const filterOptions = document.querySelectorAll(".option");
 const applyButton = document.querySelector("button");
+const errorText = document.querySelector("#error-text");
 const SELECTED_FILTERS_KEY = "sawoa-selectedFilters";
 
 // Load selected filters from localStorage (if available)
@@ -38,16 +39,13 @@ filterOptions.forEach((option) => {
       selectedFilters.push(filter);
     }
     updateFilterUI(name, filter);
-    
-    // Update localStorage with selectedFilters
-    localStorage.setItem(SELECTED_FILTERS_KEY, JSON.stringify(selectedFilters));
   });
 });
 
 // Update UI based on selected filters
 function updateFilterUI(name, filter) {
   const filterSpan = document.querySelector(`[data-filter="${filter}"]`);
-  tryAgainButton.value = "Apply Tags";
+
   if (selectedFilters.includes(filter)) {
     filterSpan.innerHTML = `${name} <span role="button">(x)</span>`;
     filterSpan.style.border = "1px solid grey";
@@ -55,10 +53,24 @@ function updateFilterUI(name, filter) {
     filterSpan.innerHTML = `${name} <span role="button">(+)</span>`;
     filterSpan.style.border = "none";
   }
+  if (selectedFilters.length < 1) {
+    tryAgainButton.disabled = true;
+    tryAgainButton.title = "Please select at least one tag to continue";
+    errorText.style.display = "block";
+  } else {
+    tryAgainButton.value = "Apply Tags";
+    tryAgainButton.disabled = false;
+    tryAgainButton.title =
+      "Careful! This picture might be gone forever once you click this.";
+    errorText.style.display = "none";
+        
+    // Update localStorage with selectedFilters
+    localStorage.setItem(SELECTED_FILTERS_KEY, JSON.stringify(selectedFilters));
+  }
 }
 
 const getNewImage = () => {
-  let NETLIFY_FUNCTION_URL = "/.netlify/functions/getNewImage"
+  let NETLIFY_FUNCTION_URL = "/.netlify/functions/getNewImage";
   window.scrollTo({
     top: 100,
     behavior: "smooth",
@@ -67,11 +79,11 @@ const getNewImage = () => {
   filters.style.display = "none";
   tryAgainButton.style.display = "none";
   tryAgainButton.disabled = true;
-  tryAgainButton.value = "Try another Picture"
+  tryAgainButton.value = "Try another Picture";
 
   if (selectedFilters.length > 0) {
-    const queryString = selectedFilters.join(",")
-    NETLIFY_FUNCTION_URL += `?q=${queryString}`
+    const queryString = selectedFilters.join(",");
+    NETLIFY_FUNCTION_URL += `?q=${queryString}`;
   }
 
   fetch(NETLIFY_FUNCTION_URL)
