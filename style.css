@@ -55,6 +55,13 @@ a:hover {
   display: none;
 }
 
+#error-text {
+  display: none;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 1rem auto;
+}
+
 .btn-container {
   margin: 1rem;
 }
@@ -78,7 +85,7 @@ a:hover {
   font-size: 0.75rem;
 }
 
-.filters >*:hover {
+.filters > *:hover {
   cursor: pointer;
   transform: translateY(-1px);
 }
@@ -119,7 +126,7 @@ span[role="button"] {
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
   margin-top: 20px;
   min-height: 3rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
