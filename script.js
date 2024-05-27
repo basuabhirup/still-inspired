@@ -56,13 +56,13 @@ function updateFilterUI(name, filter) {
   if (selectedFilters.length < 1) {
     tryAgainButton.disabled = true;
     tryAgainButton.title = "Please select at least one tag to continue";
-    errorText.style.display = "block";
+    errorText.style.visibility = "visible";
   } else {
     tryAgainButton.value = "Apply Tags";
     tryAgainButton.disabled = false;
     tryAgainButton.title =
       "Careful! This picture might be gone forever once you click this.";
-    errorText.style.display = "none";
+    errorText.style.visibility = "hidden";
         
     // Update localStorage with selectedFilters
     localStorage.setItem(SELECTED_FILTERS_KEY, JSON.stringify(selectedFilters));

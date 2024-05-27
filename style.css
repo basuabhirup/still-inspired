@@ -56,10 +56,11 @@ a:hover {
 }
 
 #error-text {
-  display: none;
+  visibility: hidden;
   color: #666;
   font-size: 0.75rem;
-  padding: 1rem auto;
+  padding: 1rem auto 0;
+  margin-bottom: 0;
 }
 
 .btn-container {
