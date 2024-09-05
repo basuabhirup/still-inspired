@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Overpass_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AppProvider } from "@/contexts/AppContext";
 
 const overpassMono = Overpass_Mono({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${overpassMono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          {children}
+          <AppProvider>{children}</AppProvider>
         </ThemeProvider>
       </body>
     </html>
