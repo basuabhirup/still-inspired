@@ -18,7 +18,11 @@ export function NavButton() {
 
   return (
     <Button variant="outline" size="icon" onClick={handleClick}>
-      {pathname === "/" ? <Images /> : <House />}
+      {pathname === "/" ? (
+        <Images className="size-[1.2rem]" />
+      ) : (
+        <House className="size-[1.2rem]" />
+      )}
     </Button>
   );
 }

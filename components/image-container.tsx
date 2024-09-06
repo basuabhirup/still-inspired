@@ -131,7 +131,7 @@ export function ImageContainer() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden md:block mx-auto text-center my-0 py-0"
+                className="block mx-auto text-center my-0 py-0"
                 onClick={() => shareImage(imageData.urls.regular)}
               >
                 <Share2 className="size-5 mx-auto text-sm" />
