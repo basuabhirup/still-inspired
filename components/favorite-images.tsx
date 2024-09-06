@@ -1,16 +1,32 @@
 "use client";
 
+import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Expand, Trash2 } from "lucide-react";
 import { Dialog, DialogContent } from "./ui/dialog";
-import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "./ui/alert-dialog";
 
 export function FavoriteImages() {
   const { getFavoriteImages, toggleFavorite } = useAppContext();
   const favoriteImages = getFavoriteImages();
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [imageToRemove, setImageToRemove] = useState<string | null>(null);
+
+  const handleRemove = (id: string) => {
+    toggleFavorite(id);
+    setImageToRemove(null);
+  };
 
   return (
     <div className="mt-8">
@@ -19,18 +35,18 @@ export function FavoriteImages() {
         <p>No favorite images yet.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl">
-          {favoriteImages.map((image) => (
+          {favoriteImages.reverse().map((image) => (
             <div key={image.id} className="relative">
               <Image
                 src={image.urls.regular}
                 alt={image.alt_description || "Favorite artwork"}
                 width={200}
                 height={200}
-                className="object-cover w-full h-48 hover:mx-[-1px] hover:cursor-pointer"
+                className="object-cover w-full h-48 hover:mx-[-1px] border rounded-sm hover:border-gray-500 hover:cursor-pointer "
                 onClick={() => setFullscreenImage(image.urls.regular)}
               />
               <Button
-                onClick={() => toggleFavorite(image.id)}
+                onClick={() => setImageToRemove(image.id)}
                 variant="outline"
                 size="icon"
                 className="absolute bottom-2 left-2 bg-white dark:bg-gray-800"
@@ -48,28 +64,55 @@ export function FavoriteImages() {
               </Button>
             </div>
           ))}
-          <Dialog
-            open={!!fullscreenImage}
-            onOpenChange={() => setFullscreenImage(null)}
-          >
-            <DialogContent className="max-w-full max-h-full p-0">
-              <div
-                className="relative w-screen h-screen"
-                onClick={() => setFullscreenImage(null)}
-              >
-                {fullscreenImage && (
-                  <Image
-                    src={fullscreenImage}
-                    alt="Fullscreen view of favorite artwork"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                )}
-              </div>
-            </DialogContent>
-          </Dialog>
         </div>
       )}
+
+      <Dialog
+        open={!!fullscreenImage}
+        onOpenChange={() => setFullscreenImage(null)}
+      >
+        <DialogContent className="max-w-full max-h-full p-0">
+          <div
+            className="relative w-screen h-screen"
+            onClick={() => setFullscreenImage(null)}
+          >
+            {fullscreenImage && (
+              <Image
+                src={fullscreenImage}
+                alt="Fullscreen view of favorite artwork"
+                layout="fill"
+                objectFit="contain"
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <AlertDialog
+        open={!!imageToRemove}
+        onOpenChange={() => setImageToRemove(null)}
+      >
+        <AlertDialogContent className="bg-white dark:bg-gray-800">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-gray-800 dark:text-gray-50">
+              Are you absolutely sure?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently remove the image from your favorites.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="text-gray-800 dark:text-gray-50">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => imageToRemove && handleRemove(imageToRemove)}
+            >
+              Remove
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
