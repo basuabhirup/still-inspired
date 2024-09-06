@@ -8,10 +8,10 @@ export default function Home() {
       <div className="w-full max-w-4xl flex justify-end mb-4">
         <ThemeToggle />
       </div>
-      <h1 className="text-4xl md:text-5xl font-bold mb-2 text-center">
+      <h1 className="text-5xl font-bold mb-2 text-center">
         Still A Work of Art
       </h1>
-      <p className="text-sm md:text-lg mb-4 text-center">
+      <p className="text-xs md:text-sm mb-4 text-center">
         Image prompts to ignite your artistic creativity.
       </p>
       <ImageContainer />

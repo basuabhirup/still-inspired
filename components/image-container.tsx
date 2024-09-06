@@ -62,9 +62,17 @@ export function ImageContainer() {
               }
             />
             <div className="w-full block text-sm p-4 text-center font-thin">
-              <span>{imageData.user.name + " / "}</span>
               <a
                 href={`${imageData.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {imageData.user.name + " / "}
+              </a>
+              <a
+                href={
+                  "https://unsplash.com?utm_source=Still-a-Work-of-Art&utm_medium=referral"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
