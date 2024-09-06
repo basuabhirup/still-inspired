@@ -1,8 +1,9 @@
 # Still A Work of Art
 
 <p align="center">
-<img src="https://github.com/Web-D-By-AB/Still-A-Work-of-Art/assets/67232969/c6da5b91-c641-4858-aa87-158e3a5d51ef" alt="Screencap of SAWOA" width="800"/>
+<img src="https://github.com/user-attachments/assets/e6f3b310-89f5-4000-9da7-5f7e1257c22d" alt="Screencap of SAWOA" width="800"/>
 </p>
+
 
 [Still A Work of Art](https://still-a-work-of-art.netlify.app/) is a minimalistic web application designed to provide artists with inspiration without any distractions. Whether you’re looking for a spark of creativity or simply want to explore new visual ideas, this web app is here to help.
 
