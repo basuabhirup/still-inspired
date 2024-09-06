@@ -1,5 +1,6 @@
 "use client";
 
+import { defaultFilters } from "@/utils/constants";
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 type ImageData = {
@@ -26,15 +27,8 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export function AppProvider({ children }: { children: ReactNode }) {
   const [imageData, setImageData] = useState<ImageData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([
-    "Landscapes",
-    "People",
-    "Food",
-    "Animals",
-    "Experimental",
-    "Architecture",
-    "Still Life",
-  ]);
+  const [selectedFilters, setSelectedFilters] =
+    useState<string[]>(defaultFilters);
 
   const getNewImage = async () => {
     setIsLoading(true);

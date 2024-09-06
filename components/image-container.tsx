@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export function ImageContainer() {
-  const { imageData, isLoading, getNewImage } = useAppContext();
-  const [imageLoading, setImageLoading] = useState<boolean>(isLoading);
+  const { imageData, isLoading, selectedFilters, getNewImage } =
+    useAppContext();
+  const [imageLoading, setImageLoading] = useState<boolean>(true);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -24,6 +25,13 @@ export function ImageContainer() {
       clearTimeout(timeout);
     };
   }, [isLoading]);
+
+  useEffect(() => {
+    (async () => {
+      await getNewImage();
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="relative w-full max-w-2xl">
@@ -48,7 +56,7 @@ export function ImageContainer() {
             alt={imageData.alt_description || "Inspirational artwork"}
             width={imageData.width || 400}
             height={imageData.height || 600}
-            className="w-auto max-h-[65vh] mx-auto text-center object-cover border-4 border-black dark:border-white"
+            className="w-auto max-h-[58vh] mx-auto text-center object-cover border-4 border-black dark:border-white"
           />
           <div className="w-full block text-sm p-4 text-center font-thin">
             <span>{imageData.user.name + " / "}</span>
@@ -87,10 +95,12 @@ export function ImageContainer() {
         onClick={getNewImage}
         className={cn(
           "mt-4 block mx-auto bg-black text-white dark:text-black dark:bg-white hover:bg-gray-800",
-          isLoading && "cursor-wait"
+          // isLoading && "hover:cursor-wait",
+          // selectedFilters.length === 0 && "hover:cursor-not-allowed"
         )}
-        disabled={imageLoading}
+        disabled={imageLoading || selectedFilters.length === 0}
         size="lg"
+        title="RamRAm"
       >
         Try another Picture
       </Button>

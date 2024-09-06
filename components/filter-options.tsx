@@ -4,16 +4,9 @@ import { Button } from "@/components/ui/button";
 import { X, Plus } from "lucide-react";
 import { useAppContext } from "@/contexts/AppContext";
 import { cn } from "@/lib/utils";
+import { defaultFilters } from "@/utils/constants";
 
-const filters = [
-  "Landscapes",
-  "People",
-  "Food",
-  "Animals",
-  "Experimental",
-  "Architecture",
-  "Still Life",
-];
+const filters = defaultFilters;
 
 export function FilterOptions() {
   const { selectedFilters, setSelectedFilters } = useAppContext();
