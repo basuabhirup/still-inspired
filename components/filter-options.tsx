@@ -20,7 +20,7 @@ export function FilterOptions() {
   };
 
   return (
-    <div className="flex flex-wrap max-w-screen-md justify-center gap-2 mt-8">
+    <div className="flex flex-wrap max-w-screen-md justify-center gap-2 mt-4">
       {filters.map((filter) => (
         <Button
           key={filter}

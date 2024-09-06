@@ -94,16 +94,23 @@ export function ImageContainer() {
       <Button
         onClick={getNewImage}
         className={cn(
-          "mt-4 block mx-auto bg-black text-white dark:text-black dark:bg-white hover:bg-gray-800",
-          // isLoading && "hover:cursor-wait",
-          // selectedFilters.length === 0 && "hover:cursor-not-allowed"
+          "mt-4 block mx-auto mb-1 bg-black text-white dark:text-black dark:bg-white hover:bg-gray-800",
+          isLoading && "hover:cursor-wait",
+          selectedFilters.length === 0 && "hover:cursor-not-allowed"
         )}
         disabled={imageLoading || selectedFilters.length === 0}
         size="lg"
-        title="RamRAm"
       >
-        Try another Picture
+        {imageLoading ? "Loading new Picture" : "Try another Picture"}
       </Button>
+      <p
+        className={cn(
+          "w-full text-[0.65rem] text-center mt-3 pt-0 mb-0 py-0",
+          selectedFilters.length > 0 ? "invisible" : "visible"
+        )}
+      >
+        Please select at least one tag to continue
+      </p>
     </div>
   );
 }
