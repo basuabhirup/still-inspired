@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AppProvider } from "@/contexts/AppContext";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NavButton } from "@/components/nav-button";
+import { Toaster } from "@/components/ui/toaster";
 
 const overpassMono = Overpass_Mono({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
                 in pursuit of art-block-free days.
               </footer>
             </main>
+            <Toaster />
           </AppProvider>
         </ThemeProvider>
       </body>
