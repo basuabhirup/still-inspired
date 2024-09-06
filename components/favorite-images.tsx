@@ -16,12 +16,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "./ui/alert-dialog";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export function FavoriteImages() {
   const { getFavoriteImages, toggleFavorite } = useAppContext();
   const favoriteImages = getFavoriteImages();
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const [imageToRemove, setImageToRemove] = useState<string | null>(null);
+  const pathname = usePathname();
 
   const handleRemove = (id: string) => {
     toggleFavorite(id);
@@ -30,11 +33,17 @@ export function FavoriteImages() {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Favorite Images</h2>
-      <div className="min-h-[55vh]">
-        {favoriteImages.length === 0 ? (
-          <p>No favorite images yet.</p>
-        ) : (
+      <h2
+        className={`text-2xl font-bold mb-4 ${
+          pathname !== "/favorites" && "mt-8"
+        }`}
+      >
+        Favorite Images
+      </h2>
+      <div className={cn(pathname === "/favorites" ? "min-h-[55vh]" : "mt-6")}>
+        {favoriteImages.length === 0 && <p>No favorite images yet.</p>}
+
+        {favoriteImages.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl">
             {favoriteImages.reverse().map((image) => (
               <div key={image.id} className="relative flex flex-col gap-y-0">

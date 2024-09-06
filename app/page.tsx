@@ -1,5 +1,6 @@
 import { ImageContainer } from "@/components/image-container";
 import { FilterOptions } from "@/components/filter-options";
+import { FavoriteImages } from "@/components/favorite-images";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       </p>
       <ImageContainer />
       <FilterOptions />
+      <FavoriteImages />
     </>
   );
 }
