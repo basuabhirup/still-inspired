@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
+  console.log(UNSPLASH_ACCESS_KEY);
+
   if (!UNSPLASH_ACCESS_KEY) {
     return NextResponse.json(
       { error: "Unsplash API key is missing" },
@@ -22,7 +24,11 @@ export async function GET(request: NextRequest) {
     params.append("query", query);
   }
 
+  console.log({ query });
+
   apiUrl += `?${params.toString()}`;
+
+  console.log({ apiUrl });
 
   try {
     const response = await fetch(apiUrl, { cache: "no-store" });
