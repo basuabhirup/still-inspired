@@ -6,10 +6,17 @@ import { useAppContext } from "@/contexts/AppContext";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "./ui/dialog";
+import { Expand, Heart, Share2 } from "lucide-react";
 
 export function ImageContainer() {
-  const { imageData, isLoading, selectedFilters, getNewImage } =
-    useAppContext();
+  const {
+    imageData,
+    isLoading,
+    selectedFilters,
+    getNewImage,
+    favorites,
+    toggleFavorite,
+  } = useAppContext();
   const [imageLoading, setImageLoading] = useState<boolean>(true);
   const [fullscreen, setFullscreen] = useState<boolean>(false);
 
@@ -56,12 +63,47 @@ export function ImageContainer() {
               alt={imageData.alt_description || "Inspirational artwork"}
               width={imageData.width || 400}
               height={imageData.height || 600}
-              className="w-auto max-h-[58vh] mx-auto text-center object-cover border-4 border-black dark:border-white hover:cursor-pointer"
+              className="w-auto max-h-[50vh] mx-auto text-center object-cover border-4 border-black dark:border-white hover:cursor-pointer"
               onClick={() =>
                 !isLoading && !imageLoading && imageData && setFullscreen(true)
               }
             />
-            <div className="w-full block text-sm p-4 text-center font-thin">
+            <div className="flex w-screen-xm justify-around items-center gap-x-3 mt-0 text-gray-500 dar:text-gray-300">
+              <Button
+                variant="ghost"
+                onClick={() => toggleFavorite(imageData.id)}
+                size="icon"
+                className="block mx-auto text-center my-0 py-0"
+              >
+                <Heart
+                  className={`size-5 mx-auto text-sm ${
+                    favorites.includes(imageData.id) &&
+                    "fill-current text-red-500"
+                  }`}
+                />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="block mx-auto text-center my-0 py-0"
+              >
+                <Share2 className="size-5 mx-auto text-sm" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="block mx-auto text-center my-0 py-0"
+                onClick={() =>
+                  !isLoading &&
+                  !imageLoading &&
+                  imageData &&
+                  setFullscreen(true)
+                }
+              >
+                <Expand className="size-5 mx-auto text-sm" />
+              </Button>
+            </div>
+            <div className="w-full block text-sm p-4 pb-2 text-center font-thin">
               <a
                 href={`${imageData.user.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`}
                 target="_blank"
@@ -79,20 +121,6 @@ export function ImageContainer() {
                 Unsplash
               </a>
             </div>
-            {/* <Button
-            variant="outline"
-            size="icon"
-            className="absolute bottom-16 left-16 border-none"
-          >
-            <Heart className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute bottom-16 left-2 border-none"
-          >
-            <Download className="h-4 w-4" />
-          </Button> */}
           </div>
         )}
 

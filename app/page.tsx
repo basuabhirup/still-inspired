@@ -1,6 +1,7 @@
 import { ImageContainer } from "@/components/image-container";
 import { FilterOptions } from "@/components/filter-options";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { FavoriteImages } from "@/components/favorite-images";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       </p>
       <ImageContainer />
       <FilterOptions />
+      <FavoriteImages />
       <footer className="mt-16 text-center text-sm">
         Made by Anusha & Abhirup <br />
         in pursuit of art-block-free days.
