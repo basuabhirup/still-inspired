@@ -12,6 +12,7 @@ import React, {
 type ImageData = {
   id: string;
   urls: { raw: string; regular: string };
+  links: { html: string };
   alt_description: string;
   user: { name: string; links: { html: string } };
   height: number;

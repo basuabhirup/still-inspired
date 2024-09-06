@@ -112,9 +112,7 @@ export function ImageContainer() {
                 {imageData.user.name + " / "}
               </a>
               <a
-                href={
-                  "https://unsplash.com?utm_source=Still-a-Work-of-Art&utm_medium=referral"
-                }
+                href={`${imageData.links.html}?utm_source=Still-a-Work-of-Art&utm_medium=referral`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
