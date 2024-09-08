@@ -34,12 +34,38 @@ type AppContextType = {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const FILTERS_STORAGE_KEY = "stillArtSelectedFilters";
+const FAVORITES_STORAGE_KEY = "stillArtFavorites";
+
 export function AppProvider({ children }: { children: ReactNode }) {
   const [imageData, setImageData] = useState<ImageData | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] =
-    useState<string[]>(defaultFilters);
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const savedFilters = localStorage.getItem(FILTERS_STORAGE_KEY);
+      return !!savedFilters && JSON.parse(savedFilters).length > 0
+        ? JSON.parse(savedFilters)
+        : defaultFilters;
+    }
+    return defaultFilters;
+  });
   const [favorites, setFavorites] = useState<string[]>([]);
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem(FAVORITES_STORAGE_KEY);
+    if (storedFavorites) {
+      setFavorites(JSON.parse(storedFavorites));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selectedFilters.length > 0) {
+      localStorage.setItem(
+        FILTERS_STORAGE_KEY,
+        JSON.stringify(selectedFilters)
+      );
+    }
+  }, [selectedFilters]);
 
   const getNewImage = async () => {
     setIsLoading(true);
@@ -64,13 +90,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
       ? favorites.filter((fav) => fav !== id)
       : [...favorites, id];
     setFavorites(newFavorites);
-    localStorage.setItem("stillArtFavorites", JSON.stringify(newFavorites));
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(newFavorites));
 
-    // If the current image is being unfavorited, also remove it from localStorage
     if (!newFavorites.includes(id) && imageData && imageData.id === id) {
       localStorage.removeItem(`stillArtFavoriteImage_${id}`);
     } else if (imageData && imageData.id === id) {
-      // If it's being favorited, store the image data
       localStorage.setItem(
         `stillArtFavoriteImage_${id}`,
         JSON.stringify(imageData)
@@ -86,13 +110,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
       })
       .filter((img): img is ImageData => img !== null);
   };
-
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem("stillArtFavorites");
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
-  }, []);
 
   return (
     <AppContext.Provider
