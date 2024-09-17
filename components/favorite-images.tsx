@@ -101,7 +101,7 @@ export function FavoriteImages() {
         open={!!fullscreenImage}
         onOpenChange={() => setFullscreenImage(null)}
       >
-        <DialogContent className="max-w-full max-h-full p-0">
+        <DialogContent className="max-w-full max-h-full p-0 border-none outline-none">
           <div
             className="relative w-screen h-screen"
             onClick={() => setFullscreenImage(null)}

@@ -208,7 +208,7 @@ export function ImageContainer() {
       </div>
 
       <Dialog open={fullscreen} onOpenChange={setFullscreen}>
-        <DialogContent className="max-w-full h-full">
+        <DialogContent className="max-w-full h-full border-none outline-none">
           {!!imageData && (
             <Image
               src={imageData.urls.regular}
