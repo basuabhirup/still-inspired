@@ -13,7 +13,7 @@ const overpassMono = Overpass_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Still A Work of Art",
+  title: "Still Inspired",
   description: "Image prompts to ignite your artistic creativity.",
 };
 

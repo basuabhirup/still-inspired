@@ -19,10 +19,10 @@ import {
 import { toast } from "@/hooks/use-toast";
 
 const shareTexts = [
-  "I found this stunning artwork on Still A Work of Art!",
+  "I found this stunning artwork on Still Inspired!",
   "Art that inspires: check out this amazing picture!",
   "This artwork caught my eye. Let it inspire you too!",
-  "Sharing a moment of visual inspiration from Still A Work of Art.",
+  "Sharing a moment of visual inspiration from Still Inspired.",
   "Every picture tells a story. What story does this one tell you?",
 ];
 

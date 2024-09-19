@@ -1,4 +1,4 @@
-# Still A Work of Art
+# Still Inspired
 
 https://github.com/user-attachments/assets/eb6dd249-d4cc-4a95-af9f-89fa47b6681f
 
@@ -6,7 +6,7 @@ https://github.com/user-attachments/assets/eb6dd249-d4cc-4a95-af9f-89fa47b6681f
 
 
 
-[Still A Work of Art](https://still-a-work-of-art.netlify.app/) is a minimalistic web application designed to provide artists with inspiration without any distractions. Whether you’re looking for a spark of creativity or simply want to explore new visual ideas, this web app is here to help.
+[Still Inspired](https://still-a-work-of-art.vercel.app) is a minimalistic web application designed to provide artists with inspiration without any distractions. Whether you’re looking for a spark of creativity or simply want to explore new visual ideas, this web app is here to help.
 
 ## Features
 
