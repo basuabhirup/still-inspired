@@ -1,12 +1,9 @@
 # Still Inspired
 
-https://github.com/user-attachments/assets/eb6dd249-d4cc-4a95-af9f-89fa47b6681f
+![Still Inspired Sreenshot](https://github.com/user-attachments/assets/b99c0781-aa43-483f-9223-d27c7987fbb5)
 
+[Still Inspired](https://still-inspired.vercel.app) was born from a simple idea: in a world full of distractions and clutter, artists need a quiet space to find inspiration. We believe that creativity thrives in simplicity and that sometimes, all it takes is a single image to get rid of your artist's block.
 
-
-
-
-[Still Inspired](https://still-a-work-of-art.vercel.app) is a minimalistic web application designed to provide artists with inspiration without any distractions. Whether you’re looking for a spark of creativity or simply want to explore new visual ideas, this web app is here to help.
 
 ## Features
 
@@ -16,6 +13,7 @@ https://github.com/user-attachments/assets/eb6dd249-d4cc-4a95-af9f-89fa47b6681f
 - **Category-Based Selection**: Choose from various categories to tailor the inspiration to your needs.
   
 ## Usage Instructions
+
 
 1. **Generate a Random Picture**:
     - Click the "Try another Picture" button to load a random picture.
@@ -39,9 +37,13 @@ https://github.com/user-attachments/assets/eb6dd249-d4cc-4a95-af9f-89fa47b6681f
 
 This project is currently not set up for code contributions. However, we appreciate your interest in helping us improve!
 
-- If you encounter any issues while using the website, please create a new issue on the project repository. Be sure to describe the issue in detail and provide any relevant screenshots or steps to reproduce it.
+- If you encounter any issues while using the app, please create a new issue on this repository. Be sure to describe the issue in detail and provide any relevant screenshots or steps to reproduce it.
 - If you have an idea for a new feature, feel free to create a new issue and share your suggestion. We'd love to hear your thoughts!
 
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+***
+
+*Still Inspired? We hope so* :)
